@@ -1,4 +1,4 @@
-package rob.myappcompany.ticket_system_;
+package rob.myappcompany.navigationdrawerdemo;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,11 +7,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends ArrayAdapter<String> {
+import rob.myappcompany.navigationdrawerdemo.ui.home.HomeFragment;
+
+public class TicketAdapter extends ArrayAdapter<String> {
 
     ArrayList<String> createrList;
     ArrayList<String> questionList;
@@ -23,7 +24,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
     ArrayList<String> updatedDateList;
 
 
-    public CustomAdapter(Context context, ArrayList<String> createrListIn, ArrayList<String> quastionListIn, ArrayList<String>situationList) {
+    public TicketAdapter(Context context, ArrayList<String> createrListIn, ArrayList<String> quastionListIn, ArrayList<String>situationList) {
         super(context, R.layout.single_item_custom_view, R.id.createrTextView, createrListIn);
         this.createrList= createrListIn;
         this.questionList=quastionListIn;

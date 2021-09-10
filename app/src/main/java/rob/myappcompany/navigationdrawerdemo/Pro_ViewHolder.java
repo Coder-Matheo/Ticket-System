@@ -1,8 +1,7 @@
-package rob.myappcompany.ticket_system_;
+package rob.myappcompany.navigationdrawerdemo;
 
 import android.view.View;
 import android.widget.TextView;
-
 
 
 public class Pro_ViewHolder {

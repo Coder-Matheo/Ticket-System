@@ -128,7 +128,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
 
-    public List<TicketModel>getAllTicket(){
+    //public List<TicketModel>getAllTicket(){
+    public String getAllTicket(){
 
         List<TicketModel> returnTicketFromDB = new ArrayList<>();
 
@@ -157,9 +158,10 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
                 //Log.i("TAG", Creater_name);
                 //Log.i("TAG", name);
+                return name;
             }while (cursor.moveToNext());
         }
-        return returnTicketFromDB;
+        return "";
     }
 
     public List<ResponseModel>getAllResponse(){

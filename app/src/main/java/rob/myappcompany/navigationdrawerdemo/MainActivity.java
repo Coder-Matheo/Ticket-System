@@ -27,13 +27,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         DatabaseHelper databaseHelper = new DatabaseHelper(MainActivity.this);
-        boolean i = databaseHelper.addTicket(new TicketModel("1","Matheo","How do it that", "IT", "Problem", "Activ", "High","11.02.2002","12.02.2020"));
-        Log.i("TAG",String.valueOf(i));
 
-        boolean s = databaseHelper.addResponse(new ResponseModel("Is here you can find", "Tom", "11", "11.02.2020", "1"));
-        Log.i("TAG",String.valueOf(s));
+        //boolean i = databaseHelper.addTicket(new TicketModel("1","Matheo","How do it that", "IT", "Problem", "Activ", "High","11.02.2002","12.02.2020"));
+        //Log.i("TAG",String.valueOf(i));
 
-        databaseHelper.getAllTicket();
+        //boolean s = databaseHelper.addResponse(new ResponseModel("Is here you can find", "Tom", "11", "11.02.2020", "1"));
+        //Log.i("TAG",String.valueOf(s));
+
+        Log.i("TAG1",databaseHelper.getAllTicket());
         databaseHelper.getAllResponse();
 
 
