@@ -29,7 +29,6 @@ public class TicketAdapter extends ArrayAdapter<String> {
         this.createrList= createrListIn;
         this.questionList=quastionListIn;
         this.situationList=situationList;
-
     }
 
     @NonNull

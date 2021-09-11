@@ -54,9 +54,6 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
         db.execSQL(createTicketTableStatment);
         db.execSQL(createAnswerTicketStatment);
-
-
-        Log.i("TAG",String.valueOf(db.isOpen()));
     }
 
     @Override
@@ -128,21 +125,8 @@ public class DatabaseHelper extends SQLiteOpenHelper{
 
 
 
-    //public List<TicketModel>getAllTicket(){
-    public String getAllTicket(){
-
-        List<TicketModel> returnTicketFromDB = new ArrayList<>();
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        String queryReadDB = "SELECT * FROM "+ TICKET_SYSTEM_TABLE;
-
-        Cursor cursor =db.rawQuery(queryReadDB, null);
-
-        cursor.moveToFirst();
-        Log.i("TAG",getDataTime("DataTime"));
-
-
-        if (cursor.moveToNext()){
+    public List<TicketModel>getAllTicket(){
+    //public String getAllTicket(){
             /*insertTicket.put(COLUM_CREATOR_NAME, "MATHEO");
             insertTicket.put(COLUM_QUESTION_TICKET, "How to create Database?");
             insertTicket.put(COLUM_TICKET_NAME, "IT");
@@ -151,17 +135,36 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             insertTicket.put(COLUM_PRIORITY_TICKET, "High");
             insertTicket.put(COLUM_CREATED_DATE, "1.2.2001");
             insertTicket.put(COLUM_UPDATED_DATE, "28.03.2012" );*/
+        List<TicketModel> returnTicketFromDB = new ArrayList<>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryReadDB = "SELECT * FROM "+ TICKET_SYSTEM_TABLE;
+
+        Cursor cursor =db.rawQuery(queryReadDB, null);
+
+        cursor.moveToFirst();
+
+
+        if (cursor.moveToNext()){
+
+            String ticket_id = cursor.getString(0);
+            String creater_name = cursor.getString(1);
+            String question_ticket = cursor.getString(2);
+            String ticket_name = cursor.getString(3);
+            String title_created = cursor.getString(4);
+            String situation_ticket = cursor.getString(5);
+            String priority_ticket = cursor.getString(6);
+            String created_date = cursor.getString(7);
+            String updated_date = cursor.getString(8);
 
             do{
-                String Creater_name = cursor.getString(1);
-                String name = cursor.getString(2);
 
-                //Log.i("TAG", Creater_name);
-                //Log.i("TAG", name);
-                return name;
+                returnTicketFromDB.add(new TicketModel(ticket_id,creater_name, question_ticket, ticket_name,
+                        title_created,situation_ticket,priority_ticket, created_date,updated_date));
+
             }while (cursor.moveToNext());
         }
-        return "";
+        return returnTicketFromDB;
     }
 
     public List<ResponseModel>getAllResponse(){
@@ -187,8 +190,7 @@ public class DatabaseHelper extends SQLiteOpenHelper{
             do{
                 String Creater_name = cursor.getString(3);
                 String name = cursor.getString(2);
-                Log.i("TAG", Creater_name);
-                Log.i("TAG", name);
+
             }while (cursor.moveToNext());
         }
         return returnResponseFromDB;

@@ -1,5 +1,8 @@
 package rob.myappcompany.navigationdrawerdemo.ui.home;
 
+import android.content.Context;
+import android.util.Log;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -9,56 +12,42 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import rob.myappcompany.navigationdrawerdemo.DatabaseHelper;
+import rob.myappcompany.navigationdrawerdemo.TicketModel;
+
 public class HomeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
-    private ArrayList<UserModel> userPropertObject = new ArrayList<>();
+    private ArrayList<TicketModel> userModelInside = new ArrayList<>();;
 
-
+    Context context;
     public HomeViewModel() {
         mText = new MutableLiveData<>();
         mText.setValue("This is home fragment");
     }
 
-    MutableLiveData<List<UserModel>> result = new MutableLiveData<>();
+    MutableLiveData<List<TicketModel>> result = new MutableLiveData<>();
 
-    //Is the Test for request ArrayList with LiveData
-    public ArrayList<UserModel> user(){
-        ArrayList<UserModel> userModelInside = new ArrayList<>();
-        userModelInside.add(new UserModel(30,"Matheo", getDataTime("Time")));
-        userModelInside.add(new UserModel(44,"Martin", getDataTime("Date")));
-        userModelInside.add(new UserModel(31,"Shahram", getDataTime("Date")));
-        return userModelInside;
+
+
+    //request ArrayList with LiveData
+    public void user(TicketModel ticketModel){
+
+        //first value is ID, but we give default Value Ticket_name
+        userModelInside.add(new TicketModel(
+                ticketModel.getCOLUM_TICKET_NAME(),
+                ticketModel.getCOLUM_CREATOR_NAME(),
+                ticketModel.getCOLUM_QUESTION_TICKET(),
+                ticketModel.getCOLUM_TICKET_NAME(),
+                ticketModel.getCOLUM_TITLE_CREATED(),
+                ticketModel.getCOLUM_SITUATION_TICKET(),
+                ticketModel.getCOLUM_PRIORITY_TICKET(),
+                ticketModel.getCOLUM_CREATED_DATE(),
+                ticketModel.getCOLUM_UPDATED_DATE()));
     }
 
-    public LiveData<List<UserModel>> getUserInfo(){
-        result.postValue(user());
+    public MutableLiveData<List<TicketModel>> getUserInfo(){
+        result.postValue(userModelInside);
         return  result;
     }
-
-    public LiveData<String> getText() {
-        return mText;
-    }
-
-
-    public String getDataTime(String choose){
-        LocalDateTime localDateTime;
-
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            localDateTime = LocalDateTime.now();
-
-            if (choose.equals("Date")){
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-                return localDateTime.format(formatter);
-            }else if(choose == "Time"){
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
-                return localDateTime.format(formatter);
-            }else if (choose == "DataTime"){
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-                return localDateTime.format(formatter);
-            }
-        }
-        return choose;
-    }
-
 }

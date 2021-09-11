@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         //boolean s = databaseHelper.addResponse(new ResponseModel("Is here you can find", "Tom", "11", "11.02.2020", "1"));
         //Log.i("TAG",String.valueOf(s));
 
-        Log.i("TAG1",databaseHelper.getAllTicket());
+        databaseHelper.getAllTicket();
         databaseHelper.getAllResponse();
 
 

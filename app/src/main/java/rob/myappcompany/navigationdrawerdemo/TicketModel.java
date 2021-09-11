@@ -3,7 +3,6 @@ package rob.myappcompany.navigationdrawerdemo;
 public class TicketModel {
 
     private String COLUM_ID;
-    private String TICKET_SYSTEM_TABLE;
     private String COLUM_CREATOR_NAME;
     private String COLUM_QUESTION_TICKET;
     private String COLUM_TICKET_NAME;
@@ -16,7 +15,6 @@ public class TicketModel {
 
     public TicketModel(String COLUM_ID, String COLUM_CREATOR_NAME, String COLUM_QUESTION_TICKET, String COLUM_TICKET_NAME, String COLUM_TITLE_CREATED, String COLUM_SITUATION_TICKET, String COLUM_PRIORITY_TICKET, String COLUM_CREATED_DATE, String COLUM_UPDATED_DATE) {
         this.COLUM_ID = COLUM_ID;
-        this.TICKET_SYSTEM_TABLE = TICKET_SYSTEM_TABLE;
         this.COLUM_CREATOR_NAME = COLUM_CREATOR_NAME;
         this.COLUM_QUESTION_TICKET = COLUM_QUESTION_TICKET;
         this.COLUM_TICKET_NAME = COLUM_TICKET_NAME;
@@ -34,14 +32,6 @@ public class TicketModel {
 
     public void setCOLUM_ID(String COLUM_ID) {
         this.COLUM_ID = COLUM_ID;
-    }
-
-    public String getTICKET_SYSTEM_TABLE() {
-        return TICKET_SYSTEM_TABLE;
-    }
-
-    public void setTICKET_SYSTEM_TABLE(String TICKET_SYSTEM_TABLE) {
-        this.TICKET_SYSTEM_TABLE = TICKET_SYSTEM_TABLE;
     }
 
     public String getCOLUM_CREATOR_NAME() {
